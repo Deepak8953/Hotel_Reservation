@@ -8,10 +8,12 @@ pipeline{
     }
 
     stages{
+        // we are defining multiple stages inside stages{}
         stage('Cloning Github repo'){
             steps{
                 echo 'Cloning Github repo to Jenkins ...'
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/kunjesh04/Hotel-Reservation-Prediction.git']])
+                // below code is taken jenkins UI which was generated after clicking 'Generate pipeline Script'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/Deepak8953/Hotel_Reservation.git']])
             }
         }
         
