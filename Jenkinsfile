@@ -1,11 +1,11 @@
 pipeline{
     agent any
 
-    // environment {
-    //     VENV_DIR = 'venv'
-    //     GCP_PROJECT = "sincere-blade-454507-s9"
-    //     GCLOUD_PATH = "/var/jenkins_home/google-cloud-sdk/bin"
-    // }
+    environment {
+        VENV_DIR = 'venv'
+        // GCP_PROJECT = ""
+        // GCLOUD_PATH = "/var/jenkins_home/google-cloud-sdk/bin"
+    }
 
     stages{
         // we are defining multiple stages inside stages{}
@@ -17,17 +17,17 @@ pipeline{
             }
         }
         
-        // stage('Setting up venv'){
-        //     steps{
-        //         echo 'Setting virtual environment and installing dependencies ...'
-        //         sh '''
-        //         python -m venv ${VENV_DIR}
-        //         . ${VENV_DIR}/bin/activate
-        //         pip install --upgrade pip
-        //         pip install -e .
-        //         '''
-        //     }
-        // }
+        stage('Setting up venv'){
+            steps{
+                echo 'Setting virtual environment and installing dependencies ...'
+                sh '''
+                python -m venv ${VENV_DIR}
+                . ${VENV_DIR}/bin/activate
+                pip install --upgrade pip
+                pip install -e .
+                '''
+            }
+        }
         
         // stage('Building Docker img and pushing to GCR'){
         //     steps{
